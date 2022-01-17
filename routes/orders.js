@@ -4,7 +4,7 @@ const { APP_NAME } = process.env;
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
-  res.send(`${APP_NAME} - Users`);
+  res.send(`${APP_NAME} - Orders`);
 });
 
 module.exports = router;
