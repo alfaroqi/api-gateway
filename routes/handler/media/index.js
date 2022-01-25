@@ -1,3 +1,5 @@
 const create = require("./create");
+const getAll = require("./getAll");
+const destroy = require("./destroy");
 
-module.exports = { create };
+module.exports = { create, getAll, destroy };
