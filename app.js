@@ -14,7 +14,7 @@ const mediaRouter = require("./routes/media");
 const paymentRouter = require("./routes/payments");
 const refreshTokenRouter = require("./routes/refreshTokens");
 
-const veryfyToken = require("./middlewares/verifyToken");
+const verifyToken = require("./middlewares/verifyToken");
 const { copyFileSync } = require("fs");
 
 const app = express();
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/courses", veryfyToken, courseRouter);
+app.use("/courses", verifyToken, courseRouter);
 app.use("/orders", orderRouter);
 app.use("/media", mediaRouter);
 app.use("/payments", paymentRouter);

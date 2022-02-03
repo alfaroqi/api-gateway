@@ -3,15 +3,12 @@ const { JWT_SECRET } = process.env;
 
 module.exports = async (req, res, next) => {
   const token = req.headers.authorization;
-  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, JWT_SECRET, function (err, decoded) {
     if (err) {
-      return res.status(403).json({
-        status: "error",
-        // message: "unauthorized",
-        message: err.message,
-      });
+      return res.status(403).json({ message: err.message });
     }
-    req.user = decoded.data;
+
+    req.user = decoded;
     return next();
   });
 };
