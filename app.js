@@ -13,6 +13,8 @@ const orderRouter = require("./routes/orders");
 const mediaRouter = require("./routes/media");
 const paymentRouter = require("./routes/payments");
 
+const veryfyToken = require("./middlewares/verifyToken");
+
 const app = express();
 
 app.use(logger("dev"));
@@ -23,7 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/courses", courseRouter);
+app.use("/courses", veryfyToken, courseRouter);
 app.use("/orders", orderRouter);
 app.use("/media", mediaRouter);
 app.use("/payments", paymentRouter);
